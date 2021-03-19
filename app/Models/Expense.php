@@ -9,7 +9,7 @@ class Expense extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'type', 'amount'];
+    protected $fillable = ['user_id', 'name', 'description', 'type', 'amount'];
 
     public function user()
     {
