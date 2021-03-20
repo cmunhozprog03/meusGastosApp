@@ -39,6 +39,15 @@
                         <h5>{{ $message }}</h5>
                     @enderror
                 </p>
+                <p>
+                    <label for="">Foto</label>
+
+                    <input type="file" class="w3-input" name="photo" wire:model="photo">
+
+                    @error('photo')
+                        <h5>{{ $message }}</h5>
+                    @enderror
+                </p>
                 <button type="submit" class="w3-button w3-teal mt-2">Criar</button>
             </div>
 
