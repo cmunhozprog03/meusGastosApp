@@ -23,6 +23,11 @@ class Expense extends Model
         return $this->attributes['amount'] = $prop * 100;
     }
 
+    public function setExpenseDateAttribute($prop)
+    {
+        return $this->attributes['expenses_date'] = (\DateTime::createFromFormat('d/m/Y H:i:s', $prop))->format('Y-m-d H:i:s');
+    }
+
     public function user()
     {
         

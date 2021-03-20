@@ -33,7 +33,9 @@
                         
                    
                 <td>{{ $exp->type }}</td>
-                <td>{{ $exp->created_at->format('d/m/Y H:i:s') }}</td>
+                <td>{{ $exp->expenses_date ? 
+                       $exp->expenses_date->format('d/m/Y H:i:s') :
+                       $exp->created_at->format('d/m/Y H:i:s') }}</td>
                 <td>
                     <a href="{{ route('expenses.edit', $exp->id) }}" class="w3-button w3-orange">Editar</a>
                     <a href="#" wire:click.prevent="remove({{ $exp->id }})" class="w3-button w3-red">Excluir</a>

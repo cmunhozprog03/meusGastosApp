@@ -14,31 +14,39 @@ class ExpenseCreate extends Component
     public $amount;
     public $type;
     public $photo;
+    public $expenseDate;
 
     protected $rules =([
         'description' => 'required',
         'amount' => 'required',
         'type' => 'required',
-        'photo' => 'image'
+        'photo' => 'image|nullable',
+        
     ]);
 
     public function createExpense()
     {
         $this->validate();
 
-        $photo = $this->photo->store('expenses-photos', 'public');
+         if($this->photo)
+         {
+            $this->photo = $this->photo->store('expenses-photos', 'public');
+         }
+            
+        
 
         auth()->user()->expenses()->create([
             'description' => $this->description,
             'amount'      => $this->amount,
             'type'        => $this->type,
             'user_id'     => 1,
-            'photo'       => $photo ?? null
+            'photo'       => $this->photo,
+            'expenses_date' => $this->expenseDate
         ]);
         
         session()->flash('message', 'registro criado com seucesso!');
         
-        $this->description = $this->amount = $this->type = null;
+        $this->description = $this->amount = $this->type = $this->photo = $this->expenseDate = null;
 
         
     }

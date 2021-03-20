@@ -40,11 +40,21 @@
                     @enderror
                 </p>
                 <p>
-                    <label for="">Foto</label>
-
+                    <label for="">Foto do comprovante</label>
                     <input type="file" class="w3-input" name="photo" wire:model="photo">
+                    @if ($photo)
+                        <img class="my-3" src="{{ $photo->temporaryUrl() }}" alt="" width="150">
+                    @endif
 
                     @error('photo')
+                        <h5>{{ $message }}</h5>
+                    @enderror
+                </p>
+                <p>
+                    <label for="">Data</label>
+                    <input type="text" class="w3-input" name="expenses_date" wire:model="expenseDate">
+                    
+                    @error('expenses_date')
                         <h5>{{ $message }}</h5>
                     @enderror
                 </p>
