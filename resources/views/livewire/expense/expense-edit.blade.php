@@ -4,9 +4,7 @@
         Editar Registro
     </x-slot>
 
-    @if (session()->has('message'))
-        <h3>{{ session('message') }}</h3>
-    @endif
+    @include('includes.message')
 
     
     <div class="w3-row py-5">
